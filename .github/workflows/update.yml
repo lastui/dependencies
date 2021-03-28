@@ -7,7 +7,7 @@ on:
 jobs:
 
   build:
-    name: Run npm check update and recompile dlls
+    name: Check for newer dependencies
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,10 +24,9 @@ jobs:
           npm install
           ncu -u
           npm install
-      - name: Check if something changed
-        uses: EndBug/version-check@v1
-        with:
-          diff-search: true
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
       - name: Bump version patch
         if: steps.check.outputs.changed == 'true'
         run: npm version patch
