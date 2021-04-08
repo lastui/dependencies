@@ -7,7 +7,7 @@ on:
 jobs:
 
   build:
-    name: Run npm check update
+    name: Run npm check update and recompile dlls
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
           check-latest: true
       - name: Install npm-check-updates
         run: npm install -g npm-check-updates
-      - name: Update build dependencies
+      - name: Check for updates
         run: |
           npm install
           ncu -u
@@ -27,17 +27,17 @@ jobs:
         uses: tj-actions/verify-changed-files@v5.5
         with:
           files: |
-            package.json
+            package.jsonn
       - name: Bump version patch
         if: steps.changes.outputs.files_changed == 'true'
         run: npm version patch --no-git-tag-version
-      - name: Create PR
+      - name: create PR
         if: steps.changes.outputs.files_changed == 'true'
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           delete-branch: true
-          commit-message: Update dependencies and recompile dlls
+          commit-message: Update dependencies
           title: Update dependencies
           labels: |
             dependencies
