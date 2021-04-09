@@ -2,7 +2,7 @@ name: Dependency update
 
 on:
   schedule:
-    - cron:  '*/30 * * * *'
+    - cron: '*/30 * * * *'
 
 jobs:
 
@@ -14,7 +14,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-          check-latest: true
       - name: Install npm-check-updates
         run: npm install -g npm-check-updates
       - name: Check for updates
