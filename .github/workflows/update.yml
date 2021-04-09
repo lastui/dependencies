@@ -19,7 +19,7 @@ jobs:
       - name: Check for updates
         run: |
           npm install
-          ncu -x 'history' -u
+          ncu -u
           npm install
       - name: Check if there are changes
         id: changes
