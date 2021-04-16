@@ -26,7 +26,7 @@ jobs:
         uses: tj-actions/verify-changed-files@v5.5
         with:
           files: |
-            package.jsonn
+            package.json
       - name: Bump version patch
         if: steps.changes.outputs.files_changed == 'true'
         run: npm version patch --no-git-tag-version
