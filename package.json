@@ -1,11 +1,11 @@
 {
   "name": "@lastui/dependencies",
-  "version": "1.1.32",
+  "version": "1.1.33",
   "dependencies": {
     "linaria": "3.0.0-beta.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intl": "5.20.6",
+    "react-intl": "5.20.7",
     "react-redux": "7.2.4",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
